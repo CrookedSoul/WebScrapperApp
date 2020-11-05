@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WebScraperApp.Pages.ChapterPage"             
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All">
+                <Label  Margin="20,0,0,0"
+                    x:Name="ChapterName"
+                    FontSize="14"
+                    VerticalOptions="Start" 
+                    HorizontalOptions="Start" 
+                    />
+                <!--<RefreshView 
+                    IsEnabled="False"
+                    x:Name="refreshCarousel"
+                    FlowDirection="RightToLeft">-->
+                <CarouselView x:Name="Pages"
+                            VerticalOptions="Start"
+                            EmptyView="No data available"
+                            ItemsLayout="HorizontalList"
+                            CurrentItemChanged="Pages_CurrentItemChanged">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <!--<Grid.RowDefinitions>
+                                    <RowDefinition Height="750*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Absolute" />
+                                </Grid.ColumnDefinitions>-->
+                                <StackLayout>
+                                    <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="3"
+                                       HorizontalOptions="Fill"
+                                       x:Name="ContentLabel"
+                                       FontSize="16"
+                                       Text="{Binding Content}" />
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <!--</RefreshView>-->
+                <!--<ListView
+                    HasUnevenRows="True"
+                    x:Name="Pages"
+                    Margin="20">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Label 
+                                           HorizontalOptions="Fill"
+                                           FormattedText="{Binding Content}"></Label>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    -->
+                <!--<ListView.Footer>
+                    </ListView.Footer>-->
+                <!--
+                </ListView>-->
+                <StackLayout Orientation="Horizontal"
+                                         VerticalOptions="End"
+                                         HorizontalOptions="Center">
+                    <Label x:Name="CurrentPageLabel"
+                           Text="{Binding CurrentPage}"></Label>
+                    <Label Text="/"></Label>
+                    <Label x:Name="TotalPagesLabel"
+                           Text="{Binding TotalPages}"></Label>
+                </StackLayout>
+            </StackLayout>
+            <Grid Margin="-10"
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalOptions="Fill"
+                        x:Name="PreviousButton"
+                        FontSize="16"
+                        HeightRequest="9999"
+                        BorderColor="Transparent"
+                        BackgroundColor="Transparent"
+                        Clicked="PreviousButton_Clicked"/>
+                <Button Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalOptions="Fill"
+                        x:Name="ActivateLayout"
+                        FontSize="16"
+                        HeightRequest="9999"
+                        BorderColor="Transparent"
+                        BackgroundColor="Transparent"
+                        Clicked="ActivateLayout_Clicked"/>
+                <Button Grid.Row="0"
+                        Grid.Column="2"
+                        HorizontalOptions="Fill"
+                        x:Name="NextButton"
+                        FontSize="16"
+                        HeightRequest="9999"
+                        BorderColor="Transparent"
+                        BackgroundColor="Transparent"
+                        Clicked="NextButton_Clicked"/>
+            </Grid>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

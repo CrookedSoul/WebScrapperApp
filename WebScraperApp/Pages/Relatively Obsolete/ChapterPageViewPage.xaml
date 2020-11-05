@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WebScraperApp.Pages.Chapter.ChapterPageViewPage"           
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All">
+                <Label  Margin="20,0,0,0"
+                    x:Name="ChapterName"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    VerticalOptions="Start" 
+                    HorizontalOptions="Start" 
+                    />
+                <CarouselView x:Name="Pages"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Start"
+                            EmptyView="No data available"
+                            ItemsLayout="HorizontalList"
+                            CurrentItemChanged="Pages_CurrentItemChanged" >
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10,0,10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout>
+                                    <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="3"
+                                       HorizontalOptions="Fill"
+                                       x:Name="ContentLabel"
+                                       FontSize="16"
+                                           LineHeight="1"
+                                       Text="{Binding Content}" />
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <StackLayout Orientation="Horizontal"
+                                         VerticalOptions="End"
+                                         HorizontalOptions="Center">
+                    <Label x:Name="CurrentPageLabel"
+                           FontSize="16"
+                           Text="{Binding CurrentPage}"></Label>
+                    <Label FontSize="16"
+                           Text="/"></Label>
+                    <Label x:Name="TotalPagesLabel"
+                           FontSize="16"
+                           Text="{Binding TotalPages}"></Label>
+                </StackLayout>
+            </StackLayout>
+            <Grid Margin="-10"
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalOptions="Fill"
+                        x:Name="PreviousButton"
+                        FontSize="16"
+                        HeightRequest="9999"
+                        BorderColor="Transparent"
+                        BackgroundColor="Transparent"
+                        Clicked="PreviousButton_Clicked"/>
+                <Button Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalOptions="Fill"
+                        x:Name="ActivateLayout"
+                        FontSize="16"
+                        HeightRequest="9999"
+                        BorderColor="Transparent"
+                        BackgroundColor="Transparent"
+                        Clicked="ActivateLayout_Clicked"/>
+                <Button Grid.Row="0"
+                        Grid.Column="2"
+                        HorizontalOptions="Fill"
+                        x:Name="NextButton"
+                        FontSize="16"
+                        HeightRequest="9999"
+                        BorderColor="Transparent"
+                        BackgroundColor="Transparent"
+                        Clicked="NextButton_Clicked"/>
+            </Grid>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

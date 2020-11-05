@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WebScraperApp.Pages.Chapter.ReaderPage"    
+             NavigationPage.HasNavigationBar="false"
+             >
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Frame 
+               AbsoluteLayout.LayoutBounds="0, 0, 1, 1"  
+               AbsoluteLayout.LayoutFlags="All"
+               BorderColor="Gray"
+               CornerRadius="15"
+               Padding="8"
+               BackgroundColor="AntiqueWhite">
+                <Grid x:Name="PageContentGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32"/>
+                        <RowDefinition Height="2"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2"/>
+                        <RowDefinition Height="32"/>
+                    </Grid.RowDefinitions>
+
+                    <Label  Grid.Row="0"
+                        Margin="20,0,0,0"
+                        x:Name="ChapterName"
+                        FontSize="16"
+                        LineBreakMode="NoWrap"
+                        FontAttributes="Bold"
+                        VerticalOptions="Start" 
+                        HorizontalOptions="Start"/>
+                    <BoxView Grid.Row="1"
+                         Color="Gray"
+                         HorizontalOptions="Fill" />
+                    <ScrollView Grid.Row="2"
+                            x:Name="ContentScroll">
+                        <Grid Margin="10">
+                            <Label  HorizontalOptions="Start"
+                                VerticalOptions="Start"
+                                LineBreakMode="WordWrap"
+                                x:Name="ContentLabel"
+                                FontSize="16"/>
+                        </Grid>
+                    </ScrollView>
+                    <BoxView Grid.Row="3"
+                         Color="Gray"
+                         HorizontalOptions="Fill" />
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent"
+                            Source="navigate_previous_black_18dp.png"
+                            x:Name="PreviousChapterImage">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                            x:Name="PreviousChapter"
+                            Tapped="PreviousChapter_Tapped"
+                            NumberOfTapsRequired="1" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Grid.Column="2"
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent"
+                            Source="list_black_18dp.png"
+                            x:Name="ShowChapterListImage">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                            x:Name="ShowChapterList"
+                            Tapped="ShowChapterList_Tapped"
+                            NumberOfTapsRequired="1" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Grid.Column="3"
+                           Grid.ColumnSpan="2"
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent"
+                            Source="navigate_next_black_18dp.png"
+                            x:Name="NextChapterImage">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                            x:Name="NextChapter"
+                            Tapped="NextChapter_Tapped"
+                            NumberOfTapsRequired="1" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <!--<Image Grid.Column="3"
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent"
+                            Source="navigate_up_black_18dp.png"
+                            x:Name="GoToBeginningImage">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                            x:Name="GoToBeginning"
+                            Tapped="GoToBeginning_Tapped"
+                            NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>-->
+                        <Image Grid.Column="5"
+                           Aspect="AspectFit"
+                           BackgroundColor="Transparent"
+                           Source="settings_black_18dp.png"
+                           x:Name="ShowSettingsImage">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    x:Name="ShowSettings"
+                                    Tapped="ShowSettings_Tapped"
+                                    NumberOfTapsRequired="1" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                </Grid>
+            </Frame>
+            <!-- Overlay -->
+            <ContentView 
+                 x:Name="overlay"  
+                 AbsoluteLayout.LayoutBounds="0, 0, 1, 1"  
+                 AbsoluteLayout.LayoutFlags="All"  
+                 IsVisible="False"  
+                 BackgroundColor="Transparent"  
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center">
+
+                <StackLayout
+                    BackgroundColor="Black"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand">
+                    <FlexLayout HorizontalOptions="End"
+                                 VerticalOptions="Start"
+                                 Wrap="Wrap" 
+                                 JustifyContent="SpaceBetween">
+                        <Label Margin="5,0,0,0"
+                               Text="ChapterList"
+                               TextColor="White"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                        <ImageButton
+                               Source="close_white_18dp.png"
+                               HorizontalOptions="End"
+                               VerticalOptions="Start"
+                               x:Name="ClosePopUp"
+                               Clicked="ClosePopUp_Clicked"
+                               BackgroundColor="Transparent"/>
+                    </FlexLayout>
+                    <ListView x:Name="ChapterList"
+                          RowHeight="60"
+                          SelectionMode="Single"
+                          SeparatorColor="{Binding SeparatorColor}"
+                          BackgroundColor="{Binding BackgroundColor}"
+                          ItemTapped="ChapterList_ItemTapped"
+                           HorizontalOptions="Center"
+                              VerticalOptions="Center">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell Tapped="ViewCell_Tapped">
+                                    <Grid Margin="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"></RowDefinition>
+                                            <RowDefinition Height="30"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid 
+                                    VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                    Grid.Row="0">
+                                            <Label 
+                                        Text="{Binding Title}"
+                                        TextColor="{Binding TitleColor}"
+                                        FontSize="16"
+                                        FontAttributes="Bold"
+                                        MaxLines="1"
+                                        LineBreakMode="NoWrap"></Label>
+                                        </Grid>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <!--<ScrollView 
+                        Grid.Row="1">
+                        <FlexLayout
+                            Wrap="Wrap" 
+                            JustifyContent="SpaceEvenly"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            x:Name="ChapterListLayout">
+                            -->
+                    <!--ovde ce biti loop za chaptere-->
+                    <!--
+                        </FlexLayout>
+                    </ScrollView>-->
+                </StackLayout>
+            </ContentView>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

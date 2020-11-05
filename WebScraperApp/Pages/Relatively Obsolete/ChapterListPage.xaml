@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WebScraperApp.Pages.Novel.ChapterListPage">
+    <ContentPage.Content>
+        <ListView x:Name="ChapterList"
+                  RowHeight="60"
+                  SelectionMode="Single"
+                  SeparatorColor="{Binding SeparatorColor}"
+                  BackgroundColor="{Binding BackgroundColor}"
+                  ItemTapped="ChapterList_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Tapped="ViewCell_Tapped">
+                        <Grid Margin="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="30"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid 
+                                VerticalOptions="FillAndExpand"
+                                Grid.Row="0">
+                                <Label 
+                                    Text="{Binding Title}"
+                                    TextColor="{Binding TitleColor}"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    MaxLines="1"
+                                    LineBreakMode="NoWrap"></Label>
+                            </Grid>
+                            <Grid
+                                Margin="2"
+                                Grid.Row="1"
+                                VerticalOptions="Start">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label  TextColor="Transparent"
+                                        Grid.Column="0"
+                                        HorizontalOptions="Start"
+                                        FontSize="16"
+                                        Text="12.12.2020 20:20" />
+                                <Label  Text="Downloaded"
+                                        TextColor="{Binding DownloadedColor}"
+                                        Grid.Column="1"
+                                        HorizontalOptions="EndAndExpand"
+                                        FontSize="16"
+                                        IsEnabled="False"/>
+                            </Grid>
+                        </Grid>
+                        <!--<ViewCell.View>
+                            <Label Text="{Binding Name}"></Label>
+                        </ViewCell.View>-->
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <!--<ListView.Footer>
+                <StackLayout>
+                    <Label Text="Click to see more"/>
+                </StackLayout>
+            </ListView.Footer>-->
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

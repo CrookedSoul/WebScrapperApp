@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WebScraperApp.Pages.MenuPage"
+             Title="Menu">
+    <StackLayout VerticalOptions="FillAndExpand">
+        <Grid BackgroundColor="{StaticResource BackgroundColor}">
+            <Grid.RowDefinitions>
+                <!--Ovde je profil image i ime i pare-->
+                <RowDefinition Height="3*"/>
+                <!--Ovde je list-->
+                <RowDefinition Height="5*"/>
+                <!--some advertisement bullshit-->
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Frame Grid.Row="0" 
+                   Grid.Column="1"
+                   BackgroundColor="{StaticResource BackgroundColor}"
+                   Margin="10"
+                   Padding="10"
+                   CornerRadius="0"
+                   BorderColor="{StaticResource SeparatorColor}"
+                   HasShadow="True">
+                <Grid  Grid.Row="0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0"
+                           Source="https://i.pinimg.com/736x/2f/4a/84/2f4a849f047ea543f8e50f7aae83107e.jpg"
+                           Aspect="AspectFill"
+                           HeightRequest="50"
+                           WidthRequest="50" />
+
+                    <Label VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Grid.Row="1" 
+                           Text="Ratko Ristic"
+                           FontSize="Medium"
+                           TextColor="{StaticResource TextColor}"
+                           FontAttributes="Bold" />
+                </Grid>
+            </Frame>
+            <ListView Grid.ColumnSpan="3"
+                      Grid.Row="1"
+                      x:Name="ListViewMenu"
+                      SelectionMode="Single"
+                      SeparatorColor="{StaticResource SeparatorColor}"
+                      BackgroundColor="{StaticResource BackgroundColor}">
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <ViewCell Tapped="ViewCell_Tapped">
+
+                            <!-- Main design for our menu items -->
+                            <StackLayout VerticalOptions="FillAndExpand"
+                             Orientation="Horizontal"
+                             Padding="20,10,0,10"
+                             Spacing="20">
+
+                                <Image Source="https://lh3.googleusercontent.com/proxy/Qi32rZyV-u-qmwSAnnBNsHXUad7y2s0ISGR4CrBLfVLRpBT9fb2ScD3w8zLN4Pm3t3349zPRIY6_pWlUIiRfxdLiAA-5KtmT9l6p5D5uNE1T"
+                                   WidthRequest="40"
+                                   HeightRequest="40"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Start" />
+                                <Label Text="{Binding Title}"
+                                   TextColor="{StaticResource TextColor} "
+                                   FontSize="Small"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="End"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!--<Frame Grid.Row="1" 
+                   BackgroundColor="AliceBlue"
+                   Margin="10,0,10,0"
+                   Padding="0"
+                   HasShadow="True">
+                <ListView 
+                    x:Name="ListViewMenu"
+                    HasUnevenRows="False">
+                    <d:ListView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Item 1</x:String>
+                            <x:String>Item 2</x:String>
+                        </x:Array>
+                    </d:ListView.ItemsSource>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Label Text="{Binding Title}" d:Text="{Binding .}" FontSize="20"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>-->
+            <Grid Grid.ColumnSpan="3"
+                  Grid.Row="2" 
+                  BackgroundColor="Red"
+                  Margin="10,0,10,10">
+            </Grid>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

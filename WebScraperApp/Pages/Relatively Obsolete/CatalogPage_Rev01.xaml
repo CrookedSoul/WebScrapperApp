@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WebScraperApp.Pages.Relatively_Obsolete.CatalogPage_Rev01"
+             xmlns:snav="clr-namespace:Stormlion.SNavigation;assembly=Stormlion.SNavigation">
+    <snav:SNavigationPage.NavContent>
+        <Grid Margin="25,0,25,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <SearchBar Grid.Column="1"
+                       Grid.Row="0"
+                       x:Name="SearchBox"
+                       CancelButtonColor="White"
+                       TextColor="Aqua"
+                       PlaceholderColor="White"
+                       Placeholder="Search"
+                       TextChanged="SearchBar_TextChanged"
+                       VerticalOptions="Center"/>
+        </Grid>
+    </snav:SNavigationPage.NavContent>
+    <ContentPage.Content>
+        <CollectionView 
+                        x:Name="NovelList"
+                        SelectionMode="Single"
+                        VerticalOptions="StartAndExpand"
+                        EmptyView="No data available"
+                        SelectionChanged="NovelList_SelectionChanged"
+                        RemainingItemsThreshold="20"
+                        RemainingItemsThresholdReached="NovelList_RemainingItemsThresholdReached"
+                        Margin="5">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate
+                IsPullToRefreshEnabled="true"
+                RefreshControlColor="Blue">
+                <DataTemplate>
+                    <Frame BorderColor="{Binding BorderColor}"
+                           BackgroundColor="{Binding BackgroundColor}"
+                           CornerRadius="15"
+                           HasShadow="True">
+                        <Grid HeightRequest="250"
+                              WidthRequest="125">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="200"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <Image HeightRequest="200"
+                                   WidthRequest="125"
+                                   Grid.Row="0"
+                                   Source="{Binding ImageURL}" 
+                                   Aspect="AspectFit"
+                                   BackgroundColor="Transparent"/>
+                            <Label Grid.Row="1"
+                                   Text="{Binding Title}" 
+                                   TextColor="{Binding TextColor}" 
+                                   FontSize="16" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   MaxLines="2"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>

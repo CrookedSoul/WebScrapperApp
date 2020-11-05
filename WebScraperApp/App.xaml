@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WebScraperApp.App">
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <Color x:Key="UnselectedTabColor">#798f8c</Color>
+            <Color x:Key="SelectedTabColor">#d9ebe9</Color>
+            <Color x:Key="TitleColor">#d9ebe9</Color>
+            <Color x:Key="SeparatorColor">#62c6f5</Color>
+            <Color x:Key="ClickedCellColor">#1a3247</Color>
+            <Color x:Key="BackgroundColor">#0e1821</Color>
+            <Color x:Key="BorderColor">#fffafa</Color>
+            <Color x:Key="TextColor">#fffafa</Color>
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries >
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

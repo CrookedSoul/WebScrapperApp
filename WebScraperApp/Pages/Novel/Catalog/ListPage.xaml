@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WebScraperApp.Pages.Novel.Catalog.ListPage"
+             xmlns:snav="clr-namespace:Stormlion.SNavigation;assembly=Stormlion.SNavigation"
+             snav:SNavigationPage.HasBackButton="False">
+    <snav:SNavigationPage.NavContent>
+        <Grid Margin="25,0,25,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <SearchBar Grid.Column="1"
+                       Grid.Row="0"
+                       x:Name="SearchBox"
+                       CancelButtonColor="White"
+                       TextColor="Aqua"
+                       PlaceholderColor="White"
+                       Placeholder="Search"
+                       TextChanged="SearchBox_TextChanged"
+                       VerticalOptions="Center"/>
+        </Grid>
+    </snav:SNavigationPage.NavContent>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

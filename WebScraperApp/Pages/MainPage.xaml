@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WebScraperApp.Pages.MainPage"
+             xmlns:catalogViews="clr-namespace:WebScraperApp.Pages.Novel.Catalog"
+             xmlns:views="clr-namespace:WebScraperApp.Pages"
+             xmlns:snav="clr-namespace:Stormlion.SNavigation;assembly=Stormlion.SNavigation">
+    <!--<MasterDetailPage.Master>
+        <ContentPage Padding="10" BackgroundColor="AliceBlue" Title="Master">
+            <ContentPage.Content>
+                <StackLayout>
+                    <Button x:Name="Catalog" Text="Catalog" BackgroundColor="Black" TextColor="White" Clicked="Catalog_Clicked"/>
+                    <Button x:Name="List" Text="List" BackgroundColor="Black" TextColor="White" Clicked="List_Clicked"/>
+                </StackLayout>
+            </ContentPage.Content>
+            
+        </ContentPage>
+    </MasterDetailPage.Master>-->
+
+    <MasterDetailPage.Master>
+        <views:MenuPage />
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <snav:SNavigationPage>
+            <!--<x:Arguments>
+                <catalogViews:ListPage />
+            </x:Arguments>-->
+        </snav:SNavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

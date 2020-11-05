@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Description"
+             x:Class="WebScraperApp.Pages.Novel.DescriptionPage">
+    <ContentPage.Content>
+
+
+            <Grid VerticalOptions="FillAndExpand"
+              x:Name="NovelGrid"
+              BackgroundColor="{Binding BackgroundColor}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.6*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="0.15*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image  Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"
+                    Margin="10,10,0,10"
+                    Source="{Binding ImageURL}"
+                    Aspect="AspectFit"/>
+                    <Grid Grid.Column="1"
+                      Margin="10,10,10,10"
+                      VerticalOptions="Center"
+                      HorizontalOptions="Start">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label  Grid.Row="0"
+                            Text="{Binding Title, StringFormat='Title: {0}'}"
+                            HorizontalOptions="Fill"
+                            VerticalTextAlignment="Start"
+                            LineBreakMode="WordWrap"
+                            TextColor="{Binding TextColor}"/>
+                        <Label  Grid.Row="1"
+                            Text="{Binding Author, StringFormat='Author: {0}'}"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalTextAlignment="Start"
+                            LineBreakMode="WordWrap"
+                            TextColor="{Binding TextColor}"/>
+                        <Label  Grid.Row="2" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start"
+                            Text="{Binding Source, StringFormat='Source: {0}'}"
+                            LineBreakMode="NoWrap"
+                            TextColor="{Binding TextColor}"></Label>
+                        <Label  Grid.Row="3" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start"
+                            Text="{Binding Status, StringFormat='Status: {0}'}"
+                            LineBreakMode="NoWrap"
+                            TextColor="{Binding TextColor}"></Label>
+                        <!--<ScrollView
+                            Grid.Row="2"
+                            Grid.ColumnSpan="2" 
+                            VerticalOptions="Start">
+                        <Label  
+                            Text="{Binding Description}"></Label>
+                    </ScrollView>-->
+                    </Grid>
+                </Grid>
+                <ScrollView Grid.Row="1">
+                    <Grid>
+                        <StackLayout>
+                            <Grid Margin="10">
+                                <Label  Grid.Row="0"
+                                Text="{Binding Description}"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalTextAlignment="Start"
+                                LineBreakMode="WordWrap"
+                                TextColor="{Binding TextColor}"/>
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="10">
+                                <FlexLayout Wrap="Wrap"
+                                                HorizontalOptions="StartAndExpand"
+                                                VerticalOptions="StartAndExpand"
+                                                JustifyContent="Center"
+                                                x:Name="TagLayout">
+                                <!--Ovde mi treba loop za Tagove na C#-->
+                                </FlexLayout>
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                </ScrollView>
+
+                <Grid Grid.Row="2"
+                      VerticalOptions="End"
+                      BackgroundColor="{Binding BackgroundColor}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button 
+                        BackgroundColor="{Binding BackgroundColor}"
+                        TextColor="{Binding TextColor}"
+                        Grid.Column="0" 
+                        Text="Add to Library"/>
+                    <Button 
+                        BackgroundColor="{Binding BackgroundColor}"
+                        TextColor="{Binding TextColor}"
+                        Grid.Column="1" 
+                        Text="Read Now"/>
+                    <Button 
+                        BackgroundColor="{Binding BackgroundColor}"
+                        TextColor="{Binding TextColor}"
+                        Grid.Column="2" 
+                        Text="Download"/>
+                </Grid>
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>

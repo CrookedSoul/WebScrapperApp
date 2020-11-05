@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WebScraperApp.MainPage">
+
+    <StackLayout>
+        <!-- Place new controls here -->
+        <!--<Button Text="Initiate"
+           HorizontalOptions="Center"
+           x:Name="InitiateButton"
+           Clicked="InitiateButton_Clicked"
+           />-->
+
+        
+        <!--<ListView
+            RowHeight="320"
+            x:Name="NovelList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Image  WidthRequest="80"
+                                HeightRequest="180"
+                                Margin="30"
+                                Source="{Binding ImageURL}"
+                                Aspect="AspectFit" />
+                    </ViewCell>
+                    --><!--<ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="180px"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="1"
+                                         Grid.Column="0"
+                                         Orientation="Vertical"
+                                         Padding="20">
+                                --><!--,StringFormat='https://i.imgur.com/{0:F0}.png'--><!--
+                                <Image Source="{Binding ImageURL}"  Aspect="AspectFill"/>
+                            </StackLayout>
+                            --><!--<StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="{Binding Title}" Font="30"/>
+                                <Label Text="{Binding Author}" Font="20"/>
+                                <Label Text="{Binding LatestChapter} " Font="10" />
+                            </StackLayout>--><!--
+                        </Grid>
+                    </ViewCell>--><!--
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+
+        <!--<CollectionView x:Name="NovelList"
+                        SelectionMode="Single"
+                        VerticalOptions="StartAndExpand"
+                        EmptyView="No data available"
+                        ItemsLayout="VerticalList"
+                        SelectionChanged="NovelList_SelectionChanged"
+                        RemainingItemsThreshold="5"
+                        RemainingItemsThresholdReached="NovelList_RemainingItemsThresholdReached">
+
+            <CollectionView.ItemTemplate
+                IsPullToRefreshEnabled="true"
+                RefreshControlColor="Blue">
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.RowSpan="2"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Source="{Binding ImageURL}"
+                                   Aspect="AspectFit"
+                                   Grid.Column="0"
+                                   HeightRequest="125"
+                                   WidthRequest="125"/>
+                        <Label Grid.Column="1"
+                                   Margin="0,0"
+                                   Text="Title :"
+                                   FontAttributes="Bold" />
+                        <Label Grid.Column="2"
+                                   Margin="-55,0,0,0"
+                                   VerticalOptions="StartAndExpand"
+                                   Text="{Binding Title}"/>
+                        <Label Grid.Row="1"
+                                   Margin="0,0"
+                                   VerticalOptions="Start"
+                                   Grid.Column="1"
+                                   Text="Author :" />
+                        <Label Grid.Row="1"
+                                   Margin="-55,0,0,0"
+                                   VerticalOptions="StartAndExpand"
+                                   Grid.Column="2"
+                                   Text="{Binding Author}" />
+                        <Label Grid.Row="3"
+                                   Margin="20,-20,0,0"
+                                   VerticalOptions="Start"
+                                   Grid.Column="0"
+                                   WidthRequest="125"
+                                   Text="Latest chapter" 
+                                   HeightRequest="20"/>
+                        <Label Grid.Row="3"
+                                   Margin="0,-20,0,0"
+                                   VerticalOptions="Start" 
+                                   HeightRequest="20"
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="2"
+                                   Text="{Binding LatestChapter}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>-->
+        <ScrollView x:Name="ScrollView"
+                    Scrolled="ScrollView_Scrolled">
+            <FlexLayout Wrap="Wrap" 
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="StartAndExpand"
+                        x:Name="NovelLayout">
+                <!--Ovde mi treba loop za Tagove na C#-->
+            </FlexLayout>
+
+        </ScrollView>
+    </StackLayout>
+
+</ContentPage>
