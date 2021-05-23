@@ -1,9 +1,6 @@
-﻿using Android.Util;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebScraperApp.Model.Chapter;
 using WebScraperApp.Scrapers.NovelFull;
 using Xamarin.Essentials;

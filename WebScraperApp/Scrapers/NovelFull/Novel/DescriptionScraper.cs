@@ -1,8 +1,6 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Web;
 using WebScraperApp.Model.Novel;
 
@@ -35,11 +33,12 @@ namespace WebScraperApp.Scrapers.NovelFull.Novel
 
             //var authorNames = infoDivs[0].SelectNodes(".//a");
             // Theres an a href for it if i want to link it to search function
-            novel.Author = /*"Author: " +*/ this.GetNodeInnerText(infoDivs[0]);
-            novel.Source = /*"Source: " +*/ this.GetNodeInnerText(infoDivs[2]);
-            novel.Status = /*"Status: " +*/ this.GetNodeInnerText(infoDivs[3]);
+            novel.Author = /*"Author: " +*/ this.GetInfo("Author", infoDivs);//this.GetNodeInnerText(infoDivs[0]);
+            novel.Source = /*"Source: " +*/ this.GetInfo("Source", infoDivs);//this.GetNodeInnerText(infoDivs[3]);
+            novel.Status = /*"Status: " +*/ this.GetInfo("Status", infoDivs);//this.GetNodeInnerText(infoDivs[4]);
 
-            var tagList = infoDivs[1].SelectNodes(".//a");
+            // Napravi dinamicki kao GetInfo sto ima;
+            var tagList = infoDivs[2].SelectNodes(".//a");
             novel.TagList = this.GetTagList(tagList);
 
             novel.ChapterList = new List<Model.Chapter.ItemModel>();
@@ -78,6 +77,31 @@ namespace WebScraperApp.Scrapers.NovelFull.Novel
                 result = result.Substring(result.IndexOf("Source:") + ("Source:").Length);
             }
             return result;
+        }
+
+        private string GetNodeInnerInfo(string InfoParameter, HtmlNode node)
+        {
+            HtmlNode h3Node = node.SelectSingleNode(".//h3");
+            if (h3Node.InnerText.ToLower().Contains(InfoParameter.ToLower()))
+            {
+                string result = this.GetNodeInnerText(node);
+                if (string.IsNullOrEmpty(result) && InfoParameter.ToLower() == "Source".ToLower()) node.InnerHtml.Substring(node.InnerHtml.IndexOf("</h3>") + node.InnerHtml.Length);
+                return result;
+            }
+            else
+            {
+                return "";
+            }
+        }
+        private string GetInfo(string InfoParameter, HtmlNodeCollection nodes)
+        {
+            foreach (HtmlNode node in nodes)
+            {
+                string result = this.GetNodeInnerInfo(InfoParameter, node);
+                if (!string.IsNullOrEmpty(result)) return result;
+            }
+
+            return "NOT FOUND BITCHES";
         }
     }
 }
