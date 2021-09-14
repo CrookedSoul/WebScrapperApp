@@ -240,6 +240,7 @@ namespace WebScraperApp.Pages.Novel.Catalog
                         if (addTheNovels.Status == TaskStatus.RanToCompletion)
                         {
                             list = scraper.List;
+                            // Check if its the previous page, if it is do not add novels i think... i forgot
                             if ((previousList[0].NovelUrl != list[0].NovelUrl) &&
                                (previousList[0].Title != list[0].Title) &&
                                (previousList[0].Author != list[0].Author))
