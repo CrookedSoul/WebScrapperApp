@@ -79,7 +79,7 @@ namespace WebScraperApp.Pages.Novel
                 Text = Name,
                 Margin = new Thickness(0, 0, 5, 5),
                 FontSize = 12,
-                Padding = 0,
+                Padding = new Thickness(10,0,10,0),
                 TextColor = model.TagTextColor,
                 BackgroundColor = Color.Transparent,
                 BorderColor = model.TagTextColor,

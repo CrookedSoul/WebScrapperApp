@@ -9,7 +9,7 @@
     <StackLayout VerticalOptions="FillAndExpand">
         <Grid BackgroundColor="{StaticResource BackgroundColor}">
             <Grid.RowDefinitions>
-                <!--Ovde je profil image i ime i pare-->
+                <!--Ovde je profil image i ime-->
                 <RowDefinition Height="3*"/>
                 <!--Ovde je list-->
                 <RowDefinition Height="5*"/>

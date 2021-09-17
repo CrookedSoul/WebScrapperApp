@@ -1,9 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using WebScraperApp.Model.Chapter;
@@ -46,18 +44,25 @@ namespace WebScraperApp.Scrapers.NovelFull.Chapter
 
             var FirstPage = doc.DocumentNode.SelectSingleNode("//*[@id = 'list-chapter']/ul[@class = 'pagination pagination-sm']/li[@class = 'active']/a");
             var LastPage = doc.DocumentNode.SelectSingleNode("//*[@id = 'list-chapter']/ul[@class = 'pagination pagination-sm']/li[@class = 'last']/a");
-            string numberOfPages = (HttpUtility.HtmlDecode(LastPage.GetAttributeValue("data-page", "1")));
+            string numberOfPages = HttpUtility.HtmlDecode(LastPage.GetAttributeValue("data-page", "1"));
             // assuming you are 'awaiting' the results of your scraping method...
             for (int i = 1; i <= (int.Parse(numberOfPages) + 1); i++)
             {
                 await Task.Run(() =>
                 {
+                    var pageUrl = "https://novelfull.com" + FirstPage.GetAttributeValue("href", "empty").Replace("?page=1", "?page=" + i.ToString());
                     // Get pageURL and replace the page with the i
-                    var pageUrl = "https://novelfull.com" + (FirstPage.GetAttributeValue("href", "empty")).Replace("?page=1", "?page=" + i.ToString()); ;
                     if (pageUrl == "empty" || pageUrl.Contains("void") || String.IsNullOrEmpty(pageUrl))
                     {
                         return;
                     }
+
+                    // If theres no page in the url add it (they might remove it so who knows)
+                    if (!pageUrl.Contains("?page"))
+                    {
+                        pageUrl += $"?page={i}";
+                    }
+
                     doc = web.Load(pageUrl);
 
                     var Chapters = doc.DocumentNode.SelectNodes("//*[@id = 'list-chapter']/div[@class = 'row']/div[@class = 'col-xs-12 col-sm-6 col-md-6']/ul/li");
