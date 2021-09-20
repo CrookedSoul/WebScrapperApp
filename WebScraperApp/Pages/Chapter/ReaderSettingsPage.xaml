@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WebScraperApp.Pages.Chapter.ReaderSettingsPage"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Black">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <!-- Ovde cemo foreach existing editable object staviti row definicije -->
+                </Grid.RowDefinitions>
+                <!-- Ovde cemo foreach isto za istu stvar samo ovde cemo objekte za gledanje i editovanje-->
+            </Grid>
+            <Label Text="Welcome to Xamarin.Forms!"
+                   TextColor="AliceBlue"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

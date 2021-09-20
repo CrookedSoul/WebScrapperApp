@@ -89,6 +89,8 @@ namespace WebScraperApp.Pages.Chapter
         private void ShowSettings_Tapped(object sender, EventArgs e)
         {
             this.AnimateButton(ShowSettingsImage);
+
+            Navigation.PushAsync(new ReaderSettingsPage());
         }
 
         private async void AnimateButton(Image button)

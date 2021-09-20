@@ -11,8 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Model\Constants\**" />
     <Compile Remove="Model\NovelFull\**" />
+    <EmbeddedResource Remove="Model\Constants\**" />
     <EmbeddedResource Remove="Model\NovelFull\**" />
+    <None Remove="Model\Constants\**" />
     <None Remove="Model\NovelFull\**" />
   </ItemGroup>
 
@@ -26,7 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\Constants\" />
     <Folder Include="Scrapers\BetLightNovel\" />
   </ItemGroup>
 
@@ -50,6 +52,9 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Pages\Chapter\ReaderPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Chapter\ReaderSettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\MainPage.xaml">
