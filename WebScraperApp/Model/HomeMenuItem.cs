@@ -7,7 +7,8 @@ namespace WebScraperApp.Model
     public enum MenuItemType
     {
         MyLibrary,
-        Browse
+        Browse,
+        UserProfile
     }
     public class HomeMenuItem
     {

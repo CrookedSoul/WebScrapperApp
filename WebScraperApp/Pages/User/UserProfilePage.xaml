@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WebScraperApp.Pages.User.UserProfilePage"
+             xmlns:snav="clr-namespace:Stormlion.SNavigation;assembly=Stormlion.SNavigation"
+             snav:SNavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="AliceBlue"
+                   VerticalOptions="Start">
+                <Label Margin="0,0,0,0"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Text="Please create your local account"></Label>
+            </Frame>
+            <Button x:Name="MediaPickerBtn" Text="PickImage" Clicked="MediaPickerBtn_Clicked"></Button>
+
+            <Image  x:Name="pickedImage"
+                    Aspect="AspectFill" />
+            <Entry x:Name ="UserNameEntry" Placeholder="UserName"></Entry>
+
+            <Button x:Name="SignUpBtn" Text="Continue" Clicked="SignUpBtn_Clicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

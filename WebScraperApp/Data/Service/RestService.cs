@@ -45,7 +45,7 @@ namespace WebScraperApp.Data.Service
             var responseObject = JsonConvert.DeserializeObject<T>(jsonResult);
             return responseObject;
         }
-
+        /*
         public async Task<T> PostResponse<T>(string webUrl, string jsonString) where T : class
         {
             var token = App.TokenDatabase.GetToken();
@@ -103,7 +103,8 @@ namespace WebScraperApp.Data.Service
                 return null;
             }
             return null;
-        }    
+        }   
+        */
 
     }
 }

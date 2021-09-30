@@ -29,13 +29,15 @@
                    CornerRadius="0"
                    BorderColor="{StaticResource SeparatorColor}"
                    HasShadow="True">
-                <Grid  Grid.Row="0" >
+                <Grid  Grid.Row="0"
+                       x:Name="ProfileMenuGrid" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="3*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    <!--"https://i.pinimg.com/736x/2f/4a/84/2f4a849f047ea543f8e50f7aae83107e.jpg"-->
                     <Image Grid.Row="0"
-                           Source="https://i.pinimg.com/736x/2f/4a/84/2f4a849f047ea543f8e50f7aae83107e.jpg"
+                           Source="{Binding ProfileImageSource}"
                            Aspect="AspectFill"
                            HeightRequest="50"
                            WidthRequest="50" />
@@ -43,7 +45,7 @@
                     <Label VerticalTextAlignment="Center"
                            HorizontalTextAlignment="Center"
                            Grid.Row="1" 
-                           Text="Ratko Ristic"
+                           Text="{Binding UserName}"
                            FontSize="Medium"
                            TextColor="{StaticResource TextColor}"
                            FontAttributes="Bold" />

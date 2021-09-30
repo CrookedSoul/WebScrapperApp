@@ -143,7 +143,7 @@ namespace WebScraperApp.Pages.Novel.Catalog
             await card.ScaleTo(1.2, 100);
             await card.ScaleTo(1, 100, Easing.SpringOut);
 
-            Navigation.PushAsync(new Novel.ViewPage(url));
+            await Navigation.PushAsync(new Novel.ViewPage(url));
         }
 
         private void NovelList_RemainingItemsThresholdReached(object sender, EventArgs e)

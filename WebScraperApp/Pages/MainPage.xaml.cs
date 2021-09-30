@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using Stormlion.SNavigation;
 using WebScraperApp.Model;
 using System.ComponentModel;
+using WebScraperApp.LocalData.Entity;
 
 namespace WebScraperApp.Pages
 {
@@ -17,10 +18,10 @@ namespace WebScraperApp.Pages
     [DesignTimeVisible(false)]
     public partial class MainPage : MasterDetailPage
     {
-        Dictionary<int, SNavigationPage> MenuPages = new Dictionary<int, SNavigationPage>();
+
+        //Dictionary<int, SNavigationPage> MenuPages = new Dictionary<int, SNavigationPage>();
         public MainPage()
         {
-
             InitializeComponent();
 
             MasterBehavior = MasterBehavior.Popover;
@@ -55,7 +56,10 @@ namespace WebScraperApp.Pages
             //        await Task.Delay(100);
 
             //    IsPresented = false;
-            //}   
+            //}
+            //
+
+            // Take ID and resolve the page to go to
             switch (id)
             {
                 case (int)MenuItemType.MyLibrary:
@@ -63,17 +67,30 @@ namespace WebScraperApp.Pages
                     Detail = new SNavigationPage(new Novel.Catalog.ListPage());
                     break;
                 case (int)MenuItemType.Browse:
-                    // This wil be list page with diff Websites
+                    // This shows the novels from the currently chosen Website
                     Detail = new SNavigationPage(new Novel.Catalog.ViewPage(null));
+                    break;
+                case (int)MenuItemType.UserProfile:
+                    // This is user profile
+                    UserInfo entUser = await App.UserDB.GetUserAsync(1);
+                    Detail = new SNavigationPage(new User.UserProfilePage(entUser));
                     break;
             }
 
+            // Its best to wait a 0.1 seconds while opening
             if (Device.RuntimePlatform == Device.Android)
                 await Task.Delay(100);
 
+            // Close the nav
             IsPresented = false;
         }
+
+        public void RefreshDetailPage()
+        {
+            this.Detail = new SNavigationPage(new Novel.Catalog.ListPage());
+        }
     }
+
     //MasterPage masterPage;
     //public MasterPage()
     //{

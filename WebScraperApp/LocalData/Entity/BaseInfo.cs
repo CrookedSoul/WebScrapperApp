@@ -1,9 +1,10 @@
 ﻿using SQLite;
 
-namespace WebScraperApp.LocalData.Models
+namespace WebScraperApp.LocalData.Entity
 {
-    public class BaseModel
+    public class BaseInfo
     {
+        [Column("ID")]
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
     }
